@@ -1,5 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/mobile_navigation">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph">
 
+    <fragment
+        android:id="@+id/bookSearchFragment"
+        android:name="com.romelapj.popularmovies.ui.moviessearch.MoviesSearchFragment"
+        android:label="Book Search Fragment"
+        tools:layout="@layout/fragment_movies_search">
+        <action
+            android:id="@+id/actionBookDetails"
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.romelapj.popularmovies.ui.moviedetail.MovieDetailFragment"
+        android:label="BookDetailsFragment" />
+
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.romelapj.popularmovies.ui.favorites.FavoritesFragment"
+        android:label="FavoritesFragment">
+        <action
+            android:id="@+id/actionBookDetails"
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <deepLink app:uri="bookmanstreasure://home/favorites" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/launcherFragment"
+        android:name="com.romelapj.popularmovies.ui.launcher.LauncherFragment"
+        android:label="Blank"
+        tools:layout="@layout/fragment_launcher">
+        <action
+            android:id="@+id/actionMovieSearch"
+            app:destination="@id/movieSearchFragment" />
+        <action
+            android:id="@+id/actionFavorites"
+            app:destination="@id/favoritesFragment" />
+    </fragment>
 </navigation>
